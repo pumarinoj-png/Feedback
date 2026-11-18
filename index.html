@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Practica conversaciones de feedback (SBI, CARPA, Comunicación No Violenta) con una contraparte simulada.">
+  <title>Práctica de Feedback · Simulador de conversaciones</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💬%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon" aria-hidden="true">💬</span> Práctica de Feedback</div>
+    <div class="brand-sub">Simulador de conversaciones</div>
+  </header>
+
+  <main>
+    <!-- 1. Elegir modelo -->
+    <section id="screen-model" class="screen">
+      <div class="intro">
+        <h1>¿Qué conversación quieres practicar hoy?</h1>
+        <p>Elige un modelo de feedback, arma tu caso y conversa con una contraparte simulada. Al final recibirás retroalimentación sobre tu desempeño.</p>
+      </div>
+      <div id="model-cards" class="cards"></div>
+    </section>
+
+    <!-- 2. Armar caso -->
+    <section id="screen-setup" class="screen hidden">
+      <button type="button" class="link-back" id="setup-back">← Cambiar modelo</button>
+      <div class="panel">
+        <div class="panel-head">
+          <span class="tag" id="setup-model-tag"></span>
+          <h2>Prepara tu conversación</h2>
+          <p id="setup-model-long" class="muted"></p>
+        </div>
+
+        <form id="setup-form" novalidate>
+          <div class="field">
+            <label for="recipient">1. ¿Para quién es el feedback?</label>
+            <p class="hint">Nombre o rol de la persona. Ej.: “Camila, analista de mi equipo hace 2 años”.</p>
+            <input type="text" id="recipient" maxlength="300" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label for="context">2. ¿Cuál es el contexto?</label>
+            <p class="hint">Qué está pasando, relación previa, momento del equipo, qué esperas lograr.</p>
+            <textarea id="context" rows="3" maxlength="2000"></textarea>
+          </div>
+
+          <div class="field">
+            <label id="attitude-label">3. ¿Qué actitud tiene la persona?</label>
+            <div id="attitude-options" class="attitudes" role="radiogroup" aria-labelledby="attitude-label"></div>
+          </div>
+
+          <div class="field">
+            <label id="case-label">4. Construye tu caso</label>
+            <p class="hint" id="case-hint">Escribe tu caso según el modelo elegido. Podrás consultarlo durante la conversación.</p>
+            <div id="case-fields" class="case-fields"></div>
+          </div>
+
+          <p id="setup-error" class="error hidden" role="alert"></p>
+          <div class="actions">
+            <button type="submit" class="btn primary big">Comenzar conversación →</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- 3. Chat -->
+    <section id="screen-chat" class="screen screen-chat hidden">
+      <div class="chat-top">
+        <div class="chips" id="chat-chips"></div>
+        <div class="toolbar">
+          <button type="button" class="btn" id="btn-restart-chat" title="Vuelve a empezar la conversación con el mismo caso">↺ Reiniciar conversación</button>
+          <button type="button" class="btn" id="btn-restart-activity" title="Define de nuevo modelo y caso desde el inicio">⟲ Reiniciar actividad</button>
+          <button type="button" class="btn primary" id="btn-feedback">★ Feedback</button>
+        </div>
+      </div>
+
+      <details class="case-box" id="case-box">
+        <summary>Ver mi caso</summary>
+        <div id="case-summary"></div>
+      </details>
+
+      <div class="chat-window">
+        <div id="messages" class="messages" aria-live="polite"></div>
+        <form id="composer" class="composer" autocomplete="off">
+          <textarea id="chat-input" rows="1" maxlength="2000" placeholder="Escribe como líder… (Enter para enviar, Shift+Enter para salto de línea)" aria-label="Tu mensaje"></textarea>
+          <button type="submit" class="btn primary send" id="btn-send">Enviar</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 4. Feedback -->
+    <section id="screen-feedback" class="screen hidden">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Retroalimentación de tu conversación</h2>
+          <p class="muted" id="fb-sub"></p>
+        </div>
+        <div id="fb-body"></div>
+        <div class="actions fb-actions">
+          <button type="button" class="btn primary" id="fb-back">← Volver a la conversación</button>
+          <button type="button" class="btn" id="fb-restart-chat">↺ Nueva conversación</button>
+          <button type="button" class="btn" id="fb-restart-activity">⟲ Nueva actividad</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

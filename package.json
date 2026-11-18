@@ -1,0 +1,9 @@
+{
+  "name": "feedback-coach",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simulador para practicar conversaciones de feedback (SBI, CARPA, Comunicación No Violenta).",
+  "engines": {
+    "node": ">=20"
+  }
+}
