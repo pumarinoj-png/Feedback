@@ -30,6 +30,20 @@
         { key: 'acuerdos', label: 'Acuerdos', hint: '¿Qué acuerdos o próximos pasos esperas construir juntos?' },
       ],
     },
+    star: {
+      id: 'star',
+      name: 'STAR+PA',
+      long: 'Situación · Tarea · Acciones observadas · Resultados · Pregunta y profundiza · Acuerda y moviliza',
+      desc: 'Feedback estructurado con ejemplos concretos, que luego indaga causas y aprendizajes y cierra con un acuerdo de acción.',
+      fields: [
+        { key: 'situacion', label: 'S: Situación', hint: 'Contexto en que ocurrió la situación o el problema que la persona tuvo que abordar.' },
+        { key: 'tarea', label: 'T: Tarea', hint: 'La tarea o responsabilidad en la que se circunscribe el feedback.' },
+        { key: 'acciones', label: 'A: Acciones observadas', hint: 'Lo que observaste, con ejemplos concretos de lo que la persona hizo o dijo.' },
+        { key: 'resultados', label: 'R: Resultados de las acciones', hint: 'El impacto de cada acción retroalimentada y su importancia o gravedad.' },
+        { key: 'pregunta', label: 'P: Pregunta y profundiza', hint: 'Preguntas para indagar causas y aprendizajes, y movilizar a la persona a identificar qué ajustar, mejorar o potenciar.' },
+        { key: 'acuerdo', label: 'A: Acuerda y moviliza', hint: 'Acuerdo concreto con objetivo y acciones, incentivando la responsabilidad de la persona sobre ellos.' },
+      ],
+    },
     cnv: {
       id: 'cnv',
       name: 'Comunicación No Violenta',

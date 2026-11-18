@@ -2,7 +2,7 @@
 
 Simulador para practicar conversaciones de feedback con una contraparte simulada por IA (Claude).
 
-**Flujo:** elegir modelo (SBI, CARPA o Comunicación No Violenta) → definir para quién es, contexto y actitud → construir el caso → conversar como líder → pedir feedback con % por criterio, promedio general y dos tips.
+**Flujo:** elegir modelo (SBI, CARPA, STAR+PA o Comunicación No Violenta) → definir para quién es, contexto y actitud → construir el caso → conversar como líder → pedir feedback con % por criterio, promedio general y dos tips.
 
 ## Estructura
 
