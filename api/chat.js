@@ -290,11 +290,18 @@ async function callClaude({ model, system, messages, max_tokens }) {
     console.error('Error de la API de Claude:', res.status, JSON.stringify(data));
     throw httpError(502, 'El servicio de IA no respondió correctamente. Intenta de nuevo en unos segundos.');
   }
-  return (data.content || [])
+  const text = (data.content || [])
     .filter((b) => b.type === 'text')
     .map((b) => b.text)
     .join('')
     .trim();
+  return { text, truncated: data.stop_reason === 'max_tokens' };
+}
+
+// Si la respuesta se cortó por límite de tokens, la recorta a la última frase completa.
+function trimToLastSentence(text) {
+  const m = text.match(/^[\s\S]*[.!?…¿?]["')»]?/);
+  return m && m[0].length >= 20 ? m[0].trim() : text;
 }
 
 function extractJson(text) {
@@ -314,12 +321,13 @@ async function handleChat(setup, messages) {
   if (!messages.length || messages[messages.length - 1].role !== 'user') {
     throw httpError(400, 'No hay ningún mensaje del líder para responder.');
   }
-  const reply = await callClaude({
+  const { text, truncated } = await callClaude({
     model: CHAT_MODEL,
     system: buildPersonaPrompt(setup, greeting),
     messages,
-    max_tokens: 300,
+    max_tokens: 800,
   });
+  const reply = truncated ? trimToLastSentence(text) : text;
   return { reply: reply || '...' };
 }
 
@@ -329,7 +337,7 @@ async function handleFeedback(setup, messages) {
   }
   const expected = buildItems(setup);
   const prompt = buildFeedbackPrompt(setup, messages);
-  const text = await callClaude({
+  const { text } = await callClaude({
     model: FEEDBACK_MODEL,
     system: 'Eres un coach experto en feedback. Respondes solo con JSON válido.',
     messages: [{ role: 'user', content: prompt }],
