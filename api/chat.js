@@ -71,6 +71,43 @@ const MODELS = {
       },
     ],
   },
+  star: {
+    nombre: 'STAR+PA (Situación, Tarea, Acciones observadas, Resultados, Pregunta y profundiza, Acuerda y moviliza)',
+    partes: [
+      {
+        key: 'situacion',
+        nombre: 'S: Situación',
+        criterio: 'contextualizó la situación o el problema que la persona tuvo que abordar, de forma clara y específica.',
+      },
+      {
+        key: 'tarea',
+        nombre: 'T: Tarea',
+        criterio: 'explicó la tarea o responsabilidad en la que se circunscribe el feedback, para que ambos tengan el mismo marco.',
+      },
+      {
+        key: 'acciones',
+        nombre: 'A: Acciones observadas',
+        criterio: 'describió lo que observó con ejemplos concretos y factuales de lo que la persona hizo o dijo, sin juicios ni generalizaciones.',
+      },
+      {
+        key: 'resultados',
+        nombre: 'R: Resultados de las acciones',
+        criterio: 'mostró el impacto de cada acción retroalimentada y su importancia o gravedad, de forma proporcionada.',
+      },
+      {
+        key: 'pregunta',
+        nombre: 'P: Pregunta y profundiza',
+        criterio:
+          'conversó para indagar causas y aprendizajes con preguntas abiertas, escuchó y movilizó a la persona para que identifique por sí misma qué debe ajustar, mejorar o potenciar.',
+      },
+      {
+        key: 'acuerdo',
+        nombre: 'A: Acuerda y moviliza',
+        criterio:
+          'cerró con un acuerdo concreto que incluye objetivo y acciones, incentivando la responsabilidad de la persona sobre ellos (y definió cómo se hará seguimiento).',
+      },
+    ],
+  },
   cnv: {
     nombre: 'Comunicación No Violenta (Observaciones, Interpretaciones/Sentimientos, Necesidades, Pedido)',
     partes: [
